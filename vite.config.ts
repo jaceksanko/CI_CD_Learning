@@ -1,6 +1,7 @@
-import { defineConfig } from 'vite';
+import { defineConfig, splitVendorChunkPlugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import packageJson from './package.json';
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
 export default defineConfig({
   define: {
@@ -9,5 +10,19 @@ export default defineConfig({
   server: {
     port: 3000,
   },
-  plugins: [react()],
+  plugins: [
+    react(),
+    splitVendorChunkPlugin(),
+    ViteImageOptimizer({
+      png: {
+        quality: 80,
+      },
+      jpeg: {
+        quality: 80,
+      },
+      webp: {
+        quality: 80,
+      },
+    }),
+  ],
 });
