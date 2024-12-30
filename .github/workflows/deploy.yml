@@ -5,6 +5,12 @@ env:
 
 on:
   workflow_dispatch:
+    inputs:
+      run-tests:
+        type: boolean
+        description: Run tests
+        default: true
+    
 
 jobs:
   deploy:
@@ -20,6 +26,7 @@ jobs:
         run: npm ci
 
       - name: Run tests
+        if: ${{ inputs.run-tests }}
         run: npm test  
 
       - name: Pull Vercel Environment Information
