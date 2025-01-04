@@ -16,7 +16,7 @@ jobs:
     timeout-minutes: 60
     steps:
       - name: Debug DEPLOY_URL
-        run: echo "DEPLOY_URL $DEPLOY_URL"
+        run: echo $DEPLOY_URL
         shell: bash
 
       - name: Run E2E Tests
