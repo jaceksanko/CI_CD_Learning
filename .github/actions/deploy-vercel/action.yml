@@ -22,7 +22,10 @@ runs:
       run: |
         vercel pull --yes --environment=production --token=${{ inputs.vercel-token }}
         vercel build --prod --token=${{ inputs.vercel-token }}
-        vercel deploy --prebuilt --prod --token=${{ inputs.vercel-token }}
+        DEPLOY_OUTPUT="$(vercel deploy --prebuilt --prod --token=${{ inputs.vercel-token }})"
+        DEPLOY_URL=$(echo "$DEPLOY_OUTPUT" | grep http | tail -n 1)
+        echo "DEPLOY_URL=$DEPLOY_URL" >> $GITHUB_ENV
+        echo "::set-output name=deploy-url::$DEPLOY_URL"
       shell: bash
 
     - name: PREVIEW Vercel Deployment
