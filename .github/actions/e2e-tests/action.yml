@@ -1,5 +1,5 @@
-name: 'Run E2E Tests'
-description: 'Runs Playwright E2E tests against specified environment'
+name: Run E2E Tests
+description: Runs Playwright E2E tests against specified environment
 
 inputs:
   base-url:
