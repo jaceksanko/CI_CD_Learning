@@ -21,7 +21,7 @@ runs:
       shell: bash
 
     - name: Debug Base URL
-      run: echo ${{ inputs.base-url }}
+      run: echo "Base URL ${{ inputs.base-url }}"
       shell: bash
 
     - name: Run Playwright tests
