@@ -16,6 +16,10 @@ runs:
       run: npx playwright install --with-deps
       shell: bash
 
+    - name: Update system
+      run: sudo apt-get update && sudo apt-get upgrade -y
+      shell: bash
+
     - name: Run Playwright tests
       run: npm run test:e2e
       env:
