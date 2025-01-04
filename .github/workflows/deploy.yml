@@ -15,9 +15,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
-      - name: Debug Deploy URL
-        run: echo "Deploy URL ${{ needs.deploy-vercel.outputs.deploy-url }}"
+      - name: Debug DEPLOY_URL
+        run: echo "DEPLOY_URL $DEPLOY_URL"
+        shell: bash
+
       - name: Run E2E Tests
         uses: ./.github/actions/e2e-tests
         with:
-          base-url: ${{ needs.deploy-vercel.outputs.deploy-url }}
+          base-url: $DEPLOY_URL
