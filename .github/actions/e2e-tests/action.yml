@@ -9,12 +9,10 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Configure node
-      uses: ./.github/actions/setup-project
-
-    - name: Update system
-      run: sudo apt-get update && sudo apt-get upgrade -y
-      shell: bash
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
 
     - name: Install Playwright browsers
       run: npx playwright install --with-deps
