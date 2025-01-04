@@ -19,6 +19,11 @@ runs:
     - name: Install Playwright browsers
       run: npx playwright install --with-deps
       shell: bash
+
+    - name: Debug Base URL
+      run: echo ${{ inputs.base-url }}
+      shell: bash
+
     - name: Run Playwright tests
       run: npm run test:e2e
       env:
