@@ -3,8 +3,6 @@ import { CharactersPage } from '../pages/CharactersPage';
 import { CharacterDetailsPage } from '../pages/CharacterDetailsPage';
 
 test('navigation to character details', async ({ page }) => {
-  const baseURL = test.info().project.use.baseURL;
-  console.log(`Base URL: ${baseURL}`);
   const mainPage = new CharactersPage(page);
   await mainPage.navigate();
   await mainPage.navigateToCharacterDetails('1');

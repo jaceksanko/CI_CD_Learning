@@ -25,10 +25,9 @@ runs:
         DEPLOY_OUTPUT="$(vercel deploy --prebuilt --prod --token=${{ inputs.vercel-token }})"
         DEPLOY_URL=$(echo "$DEPLOY_OUTPUT" | grep http | tail -n 1)
         echo "DEPLOY_URL=$DEPLOY_URL" >> $GITHUB_ENV
-        echo "deploy-url=$DEPLOY_URL" >> $GITHUB_OUTPUT
         echo "$DEPLOY_URL" > deploy-url.txt
       shell: bash
-      
+
     - name: Upload deploy URL
       uses: actions/upload-artifact@v3
       with:
