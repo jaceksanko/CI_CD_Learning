@@ -14,7 +14,7 @@ export class CharactersPage {
   }
 
   async navigateToCharacterDetails(characterId: string) {
-    console.log(`Url: ${this.url}`);
+    await this.page.waitForSelector(`[data-testid="character-link-${characterId}"]`);
     await this.page.click(`[data-testid="character-link-${characterId}"]`);
     await this.page.waitForSelector('[data-testid="character-details"]');
   }
